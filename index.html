@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <title>Price Oye</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-info">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img src="./Assets/po-footer-logo-white.svg" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="offcanvas offcanvas-start bg-info"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+              <img src="./Assets/po-footer-logo-white.svg" alt="" />
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <div class="position-relative w-50 row">
+                <input
+                  class="form-control me-2 w-100 my-auto rounded-3"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+              </div>
+            </div>
+            <form class="d-flex my-auto gap-2" role="search">
+              <button class="btn btn-light btn-outline-info px-4" type="submit">
+                login
+              </button>
+              <button class="btn btn-outline-light px-4" type="submit">
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <div class="col-10 d-flex justify-content-evenly">
+        <select
+          onchange="companySelection()"
+          name="company"
+          id="company"
+          class="rounded-pill bg-info text-white p-2 border-white"
+        >
+          <option value="SelectCompany" selected disabled>
+            Select Company
+          </option>
+        </select>
+
+        <select
+          onchange="productSelection()"
+          name="product"
+          id="product"
+          class="rounded-pill bg-info text-white p-2 border-white"
+        >
+          <option value="SelectProduct" selected disabled>
+            Select Product
+          </option>
+        </select>
+
+        <button
+          onclick="searchProduct()"
+          class="btn btn-info rounded-pill px-3 py-2 text-white"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card -->
+    <div class="container mt-5 d-none" id="list">
+      <div class="row">
+        <div class="col-6">
+          <div class="card rounded-4 p-2">
+            <div class="card-img rounded-5">
+              <img id="image" class="img-fluid" src="" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h1 id="heading"></h1>
+          <div class="rating d-flex align-content-center my-3">
+            <p class="p-0 m-0 me-2">5.0</p>
+            <i class="fa-solid fa-star text-warning my-auto"></i>
+            <i class="fa-solid fa-star text-warning my-auto"></i>
+            <i class="fa-solid fa-star text-warning my-auto"></i>
+            <i class="fa-solid fa-star text-warning my-auto"></i>
+            <i class="fa-solid fa-star text-warning my-auto"></i>
+            <p class="p-0 m-0 ms-2">1 Ratings</p>
+          </div>
+          <div class="approved mt-2 d-flex my-3">
+            <img class="img-fluid" src="./Assets/po-approved.svg" alt="" />
+            <p class="p-0 m-0 my-auto ms-2">Priceoye Assured</p>
+          </div>
+          <div class="price d-flex justify-content-between">
+            <div>
+              <p class="p-0 m-0 text-black-50 small">Priceoye Price</p>
+              <h2 id="price"><sup>$</sup></h2>
+              <span class="d-flex gap-2">
+                <p><sup>$</sup><del>2000</del></p>
+                <p class="badge bg-success-subtle text-success fw-light px-2">
+                  38% Off
+                </p>
+              </span>
+            </div>
+            <div>
+              <p class="p-0 m-0 text-black-50 small">Available</p>
+              <h4>In Stock</h4>
+            </div>
+          </div>
+          <div class="color">
+            <p class="fw-bold">Color</p>
+          </div>
+          <div class="buttons">
+            <button class="btn btn-warning px-5">Add to cart</button>
+            <button class="btn btn-info px-5"><del>Compare</del></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer  -->
+    <footer class="py-5 bg-info mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <img
+              class="img-fluid"
+              src="./Assets/po-footer-logo-white.svg"
+              alt=""
+            />
+            <ul class="nav flex-column mt-4">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">About Us</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">FAQs</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Contact us</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Careers</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Press & Blog</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white"
+                  >term & Conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-2 mb-3">
+            <h5 class="text-white mt-2">Customer Service</h5>
+            <ul class="nav flex-column mt-4">
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Help Center</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Privacy Policy</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white"
+                  >Installments Plan
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white"
+                  >E-Warranty Activation</a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#" class="nav-link p-0 text-white">Sell on Priceoye</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form class="text-white">
+              <h5>Subscribe to our newsletter</h5>
+              <p>Monthly digest of what's new and exciting from us.</p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                <label for="newsletter1" class="visually-hidden"
+                  >Email address</label
+                >
+                <input
+                  id="newsletter1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Email address"
+                />
+                <button class="btn btn-light" type="button">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top"
+        >
+          <p class="text-white">© 2024 Company, Inc. All rights reserved.</p>
+          <ul class="list-unstyled d-flex">
+            <li class="ms-3">
+              <a class="link-body-emphasis" href="#"
+                ><svg class="bi" width="24" height="24">
+                  <use xlink:href="#twitter"></use></svg
+              ></a>
+            </li>
+            <li class="ms-3">
+              <a class="link-body-emphasis" href="#"
+                ><svg class="bi" width="24" height="24">
+                  <use xlink:href="#instagram"></use></svg
+              ></a>
+            </li>
+            <li class="ms-3">
+              <a class="link-body-emphasis" href="#"
+                ><svg class="bi" width="24" height="24">
+                  <use xlink:href="#facebook"></use></svg
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://kit.fontawesome.com/1c074bcd7a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+    <script src="bootstrapscript.js"></script>
+    <script src="pooper.js"></script>
+    <script src="bundle.js"></script>
+  </body>
+</html>
