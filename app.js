@@ -298,6 +298,25 @@ var watches = {
   },
 };
 
+// listing
+var list = document.getElementById("list2");
+for (var listing in watches) {
+  for (var productlist in watches[listing]) {
+    var productListing = watches[listing][productlist];
+    list.innerHTML += `
+  <div class="col-3 mt-3">
+          <div class="card p-3 rounded-4 h-100 ">
+            <div class="card-img mb-3">
+              <img class="img-fluid" id="cardImg" src="${productListing.img}" alt="img" />
+            </div>
+            <div class="card-title m-0">
+              <h2 class="fw-bold text-center m-0" id="card-title">${productListing.name}</h2>
+            </div>
+          </div>
+        </div>`;
+  }
+}
+
 var selectCompany = document.getElementById("company");
 var selectProduct = document.getElementById("product");
 var selectedCompany;
@@ -334,14 +353,17 @@ var heading = document.getElementById("heading");
 var price = document.getElementById("price");
 var list = document.getElementById("list");
 function searchProduct() {
-  list.classList.remove("d-none");
+  var found = false;
   for (var key in watches[selectedCompany]) {
     if (watches[selectedCompany][key].name === selectedProduct) {
       heading.textContent = watches[selectedCompany][key].name;
       price.textContent = watches[selectedCompany][key].price;
       image.src = watches[selectedCompany][key].img;
-    } else {
-      Swal.fire("Please Select Products");
+      list.classList.remove("d-none");
+      found = true;
     }
+  }
+  if (!found) {
+    Swal.fire("Please Select Products");
   }
 }
